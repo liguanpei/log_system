@@ -1,0 +1,132 @@
+{% load static %}
+<html>
+<head>
+<script type="text/javascript" src="{% static "js/jquery-1.9.0.js" %}" > </script>
+</head>
+<body>
+
+<script type="text/javascript">
+ $(function(){
+	$(".delButton").click(function(){
+	    var pid =  $(this).attr("pid");
+        var dev_name = $(this).attr("dev_name");
+        alert(dev_name);
+        if(question)
+        {
+		var tmp = "/delete/"
+		$.get(tmp,{
+		'pid':pid,
+		'dev_name':dev_name,
+		});
+	}
+});
+});
+</script>
+
+<form action="." method="get">
+<span>地区:</span>
+<select style="margin-top: 5px;width: 120px;" name='area' id='select1' >
+  <option>北京</option>
+  <option>上海</option>
+</select>
+<span><input type="submit" value="查询" /></span>
+</form>
+
+
+<table width="500" border="1">
+<tr valign="top">
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+    <b>设备ID</b><br />
+    </td>
+    <td align="center" valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+    <b>设备名</b> <br />
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <b>查看日志</b> <br />
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <b>操作</b> <br />
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 1 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="1"> 设备1 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name1' %}">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="1" type ="button" dev_name="dev_name1" value ="删除">
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+<div class="span10">
+
+</div>
+	{% if pagination.has_other_pages %}
+	<div class="pagination pagination-small" style="float: left;margin: 0;">
+		<ul>
+			{% if pagination.has_previous %}
+			<span>
+                <a href="{{file_name}}?p=1">|&lt;</a>
+			</span>
+			<span>
+                <a href="{{file_name}}?p={{pagination.previous_page_number}}">&lt;&lt;</a>
+			</span>
+			{% endif %}
+			<span class="active">
+				<a href="javascript:;">{{pagination.number}}</a>
+			</span>
+			{% if pagination.has_next %}
+			<span>
+                <a href="{{file_name}}?p={{pagination.next_page_number}}">&gt;&gt;</a>
+			</span>
+			<span>
+                <a href="{{file_name}}?p={{pagination.paginator.num_pages}}">&gt;|</a>
+			</span>
+			{% endif %}
+		</ul>
+	</div>
+	<form method="get" class="form-inline">
+		<span>&nbsp;&nbsp;(共{{pagination.paginator.num_pages}}页）前往:</span>
+		<div class="input-append">
+			<input style="width:40px;" type="text" name="p" placeholder="页"/>
+			<button type="submit" class="btn">Go</button>
+		</div>
+	</form>
+	{% endif %}
+
+</body>
+</html>
+
+
+
