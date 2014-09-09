@@ -5,7 +5,7 @@
         <meta   http-equiv= "Pragma"   content= "no-cache" />
         <meta   http-equiv= "Cache-Control"   content= "no-cache" />
         <meta   http-equiv= "Expires"   content= "0" />
-        <title>新增设备</title>
+        <title>新增地区</title>
         <link rel="stylesheet" href="{% static "css/bootstrap.css"%}"/>
         <script type="text/javascript" src="{% static "js/jquery-1.9.0.js" %}" > </script>
         <style type="text/css">
@@ -24,13 +24,13 @@
 <body>
 
     <div id="main">
-            <form action="device_info/", method="POST" onsubmit="return validation();">
+            <form action="area_info/", method="POST" onsubmit="return validation();">
             {% csrf_token %}
-            <legend>新增设备：</legend>
-            <div><span>设备名称:</span><input type="text" id="pid1" name="device_name" /><span id="pid3"></span></div>
-            <div><span>设备类型:</span><input type="text" id="pid2" name="device_type" /><span id="pid4"></span></div>
-            <div >
-                <input class="btn btn-primary" type="submit" value="提交" onclick="validation()" style="width:10%; margin-top:20px; margin-left: 110px;"/>
+            <legend>新增地区：</legend>
+            <div><span>地区名:</span><input type="text" id="pid11" name="device_name" /><span id="pid1"></span></div>
+            <div><span>负责人:</span><input type="text" id="pid22" name="device_area" /><span id="pid2"></span></div>
+            <div><span>邮件组:</span><input type="text" id="pid33" name="device_area" /><span id="pid3"></span></div>
+            <input class="btn btn-primary" type="submit" value="提交" onclick="validation()" style="width:10%; margin-top:20px; margin-left: 110px;"/>
             </div>
         </form>
     </div>
@@ -41,15 +41,15 @@
 
 <script>
 function validation(){
-    if(document.getElementById("pid1").value=="") {
-        var name=document.getElementById("pid3");
+    if(document.getElementById("pid11").value=="") {
+        var name=document.getElementById("pid1");
         name.style.color="red";
         name.innerHTML="不能为空!";
         document.getElementById("pid1").focus();
         return false;
   }
-    if(document.getElementById("pid2").value=="") {
-        var name=document.getElementById("pid4");
+    if(document.getElementById("pid22").value=="") {
+        var name=document.getElementById("pid2");
         name.style.color="red";
         name.innerHTML="不能为空!";
         document.getElementById("pid2").focus();
