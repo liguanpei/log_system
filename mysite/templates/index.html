@@ -1,6 +1,7 @@
 {% load static %}
 <html>
 <head>
+<title>设备信息</title>
 <script type="text/javascript" src="{% static "js/jquery-1.9.0.js" %}" > </script>
 </head>
 <body>
@@ -8,14 +9,14 @@
 <script type="text/javascript">
  $(function(){
 	$(".delButton").click(function(){
-	    var pid =  $(this).attr("pid");
-        var dev_name = $(this).attr("dev_name");
-        alert(dev_name);
-        if(question)
+        var dev_name = $(this).attr("dev_name");    
+        if (confirm("您确定要删除吗？") == false)
+            return false;
+        
+        if(dev_name)
         {
 		var tmp = "/delete/"
 		$.get(tmp,{
-		'pid':pid,
 		'dev_name':dev_name,
 		});
 	}
@@ -24,14 +25,16 @@
 </script>
 
 <form action="." method="get">
-<span>地区:</span>
+<span>请选择地区:</span>
 <select style="margin-top: 5px;width: 120px;" name='area' id='select1' >
+  <option selectd> 广州 </option>  
   <option>北京</option>
   <option>上海</option>
 </select>
 <span><input type="submit" value="查询" /></span>
 </form>
 
+<a href="{% url device_create %}" target="_blank" class="btn btn-info pull-right">新增设备</a>
 
 <table width="500" border="1">
 <tr valign="top">
@@ -57,13 +60,12 @@
         <span pid="1"> 设备1 </span>
     </td>
     <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
-    <a href="{% url history_log 'dev_name1' %}">查看</a>
+    <a href="{% url history_log 'dev_name1' %}" target="_blank">查看</a>
     </td>
     <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
     <input class = "delButton" pid="1" type ="button" dev_name="dev_name1" value ="删除">
     </td>
 </tr>
-
 <tr>
     <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
         <span> 2 </span>
@@ -72,23 +74,147 @@
         <span pid="2"> 设备2 </span>
     </td>
     <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
-    <a href="{% url history_log 'dev_name2' %}">查看</a>
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备3 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
     </td>
     <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
     <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
     </td>
 </tr>
 
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备4 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备5 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备6 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备7 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备8 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备9 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;width:100px;text-align:top;">
+        <span> 2 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#EEEEEE;height:50px;width:400px;text-align:top;">
+        <span pid="2"> 设备10 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#00ff00;height:50px;width:400px;text-align:top;">
+    <a href="{% url history_log 'dev_name2' %}" target="_blank">查看</a>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#99bbbb;height:50px;width:400px;text-align:top;">
+    <input class = "delButton" pid="2" type ="button" dev_name="dev_name2" value ="删除">
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </table>
-
-
-
-
-
-
-
-
-
 <div class="span10">
 
 </div>
