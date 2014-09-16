@@ -28,6 +28,11 @@ def area_info(request, template_name):
     """
     return render(request, template_name)
 
+def person_info(request, template_name):
+    """
+    """
+    return render(request, template_name)
+
 def area_create(request, template_name):
     if request.method == 'POST':
         pass

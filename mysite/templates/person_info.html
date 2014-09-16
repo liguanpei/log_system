@@ -1,0 +1,94 @@
+{% load static %}
+<html>
+<head>
+<title>负责人信息</title>
+<script type="text/javascript" src="{% static "js/jquery-1.9.0.js" %}" > </script>
+</head>
+<body>
+
+
+
+<table width="500" border="1">
+<tr valign="top">
+
+    <td align="center" valign="middle" style="background-color:#ffff99;height:50px;width:400px;text-align:top;">
+    <b>姓名</b> <br />
+    </td>
+    <td align="center"  valign="middle" style="background-color:#ffffff;height:50px;width:400px;text-align:top;">
+    <b>电话</b> <br />
+    </td>
+    <td align="center" valign="middle" style="background-color:#ffff99;height:50px;width:400px;text-align:top;">
+    <b>邮箱</b> <br />
+    </td>
+</tr>
+</tr>
+</tr>
+
+<tr>
+    <td align="center" valign="middle" style="background-color:#ffff99;height:50px;width:400px;text-align:top;">
+        <span> 王大爷 </span>
+    </td>
+    <td align="center"  valign="middle" style="background-color:#ffffff;height:50px;width:400px;text-align:top;">
+        <span> 18010101100 </span>
+    </td>
+    <td align="center" valign="middle" style="background-color:#ffff99;height:50px;width:400px;text-align:top;">
+        <span> daye.wang@chinacache.com </span>
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+<div class="span10">
+
+</div>
+	{% if pagination.has_other_pages %}
+	<div class="pagination pagination-small" style="float: left;margin: 0;">
+		<ul>
+			{% if pagination.has_previous %}
+			<span>
+                <a href="{{file_name}}?p=1">|&lt;</a>
+			</span>
+			<span>
+                <a href="{{file_name}}?p={{pagination.previous_page_number}}">&lt;&lt;</a>
+			</span>
+			{% endif %}
+			<span class="active">
+				<a href="javascript:;">{{pagination.number}}</a>
+			</span>
+			{% if pagination.has_next %}
+			<span>
+                <a href="{{file_name}}?p={{pagination.next_page_number}}">&gt;&gt;</a>
+			</span>
+			<span>
+                <a href="{{file_name}}?p={{pagination.paginator.num_pages}}">&gt;|</a>
+			</span>
+			{% endif %}
+		</ul>
+	</div>
+	<form method="get" class="form-inline">
+		<span>&nbsp;&nbsp;(共{{pagination.paginator.num_pages}}页）前往:</span>
+		<div class="input-append">
+			<input style="width:40px;" type="text" name="p" placeholder="页"/>
+			<button type="submit" class="btn">Go</button>
+		</div>
+	</form>
+	{% endif %}
+
+</body>
+</html>
+
+
+
